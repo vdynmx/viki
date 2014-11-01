@@ -3,13 +3,14 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.9'
 group :production do  
-  gem 'pg'  
   gem 'rails_12factor'  
 end   
 
 group :development do  
-  gem 'sqlite3'  
 end
+
+gem 'mongoid', '~> 4', github: 'mongoid/mongoid'
+gem 'bson_ext'
 
 gem 'devise'
 gem 'bootstrap'
