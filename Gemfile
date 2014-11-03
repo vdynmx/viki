@@ -13,8 +13,9 @@ gem 'mongoid', '~> 4', github: 'mongoid/mongoid'
 gem 'bson_ext'
 
 gem 'devise'
-gem 'bootstrap'
+gem 'bootstrap-sass', '~> 3.1.1' 
 gem 'haml-rails'
+gem 'figaro', '1.0'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.2'
 

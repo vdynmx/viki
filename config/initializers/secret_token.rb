@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Viki::Application.config.secret_key_base = '9b0c927ba6c0226f323feb29a3e6ff28e0bbd99fb2fc1fb24d178c5b343e00a6dafd777ee32dda0146b46a1f6c3e61abc3d64838777a5a75c49a3b4299a4a067'
+Viki::Application.config.secret_key_base = ENV['SECRET_KEY_BASE']
