@@ -4,7 +4,9 @@ class User
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
-
+  
+  has_many :wikis
+  
   #adding username
   field :name,               type: String, default: ""       
 
