@@ -4,8 +4,8 @@ Viki::Application.routes.draw do
   resources :wikis
   
   
-  get "wiki/about"
+  get "wikis/about"
 
-  root to: 'wiki#index'
+  root to: 'wikis#index'
 
 end

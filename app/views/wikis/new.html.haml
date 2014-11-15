@@ -1,0 +1,7 @@
+%h1 New Wiki
+= form_for @wiki do |f|
+  = f.label :title
+  = f.text_field :title
+  = f.label :body
+  = f.text_area :body
+  = f.submit "Save"
