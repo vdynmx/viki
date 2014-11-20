@@ -7,4 +7,5 @@ class Wiki
 
   field :title, type: String
   field :body, type: String
+  field :public, type: Boolean
 end
