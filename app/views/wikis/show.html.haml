@@ -1,4 +1,4 @@
-%h1= @wiki.title
+%h1= markdown @wiki.title
 - if policy(@wiki).edit?
   = link_to "Edit", edit_wiki_path(@wiki), class: 'btn btn-success'
-%p= @wiki.body
+%p= markdown @wiki.body
