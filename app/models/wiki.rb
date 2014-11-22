@@ -8,4 +8,7 @@ class Wiki
   field :title, type: String
   field :body, type: String
   field :public, type: Boolean
+
+  scope :visible_to, -> (user) { user ? all : where(public: true) }
+
 end

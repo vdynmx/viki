@@ -44,13 +44,11 @@ class User
     role == 'admin'
   end
 
-  def moderator?
-    role == 'moderator'
-  end
-  
   def paid?
+    role == 'paid'
   end
 
   def free?
+    role == 'free'
   end
 end

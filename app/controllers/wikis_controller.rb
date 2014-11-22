@@ -14,7 +14,7 @@ class WikisController < ApplicationController
   end
   
   def create
-    @wiki = current_user.wiki.build(params.require(:wiki).permit(:title, :body, :public))
+    @wiki = current_user.wikis.build(params.require(:wiki).permit(:title, :body, :public))
     authorize @wiki
     if @wiki.save
       flash[:notice] = "Wiki was saved."
@@ -44,6 +44,20 @@ class WikisController < ApplicationController
       render :edit
     end
   end
+
+   def destroy
+     @wiki = Wiki.find(params[:id])
+     name = @wiki.name
+ 
+     authorize @wiki
+     if @wiki.destroy
+       flash[:notice] = "\"#{name}\" was deleted successfully."
+       redirect_to wikis_path
+     else
+       flash[:error] = "There was an error deleting the topic."
+       render :show
+     end
+   end
 
 
 

@@ -1,0 +1,5 @@
+%h1 Paid User
+= form_for @plan do |f|
+  = f.label :"Upgrade to paid ?"
+  = f.check_box :public
+  = f.submit "Save"
