@@ -1,7 +1,8 @@
 class WikisController < ApplicationController
+
   def index
-    @wikis = Wiki.all
-    authorize @wikis
+    @wikis = Wiki.visible_to(current_user)
+    authorize @wikis    
   end
 
   def show
@@ -47,11 +48,11 @@ class WikisController < ApplicationController
 
    def destroy
      @wiki = Wiki.find(params[:id])
-     name = @wiki.name
+     title = @wiki.title
  
      authorize @wiki
      if @wiki.destroy
-       flash[:notice] = "\"#{name}\" was deleted successfully."
+       flash[:notice] = "\"#{title}\" was deleted successfully."
        redirect_to wikis_path
      else
        flash[:error] = "There was an error deleting the topic."
