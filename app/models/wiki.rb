@@ -7,8 +7,8 @@ class Wiki
 
   field :title, type: String
   field :body, type: String
-  field :public, type: Boolean
+  field :private, type: Boolean, default: false
 
-  scope :visible_to, -> (user) { user ? all : where(public: true) }
+  scope :visible_to, -> (user) { user ? all : where(private: false) }
 
 end
