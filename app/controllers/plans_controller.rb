@@ -1,13 +1,13 @@
 class PlansController < ApplicationController
 
    def new
+
    @stripe_btn_data = {
      key: "#{ Rails.configuration.stripe[:publishable_key] }",
-     description: "BigMoney Membership - ",
-     amount: 10_00
+     description: "BigMoney Membership - #{current_user.name}",
+     amount: 500
    }
   end
-
   def create
  
    # Creates a Stripe Customer object, for associating
@@ -20,13 +20,13 @@ class PlansController < ApplicationController
    # Where the real magic happens
    charge = Stripe::Charge.create(
      customer: customer.id, # Note -- this is NOT the user_id in your app
-     amount: Amount.default,
+     amount: 500,
      description: "BigMoney Membership - #{current_user.email}",
      currency: 'usd'
    )
  
    flash[:success] = "Thanks for all the money, #{current_user.email}! Feel free to pay me again."
-   current_user
+   current_user.role == 'paid'
    redirect_to user_path(current_user) # or wherever
  
  # Stripe will send back CardErrors, with friendly messages

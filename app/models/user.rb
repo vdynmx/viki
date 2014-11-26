@@ -34,7 +34,7 @@ class User
    field :confirmation_sent_at, type: Time
    field :unconfirmed_email,    type: String # Only if using reconfirmable
 
-  field :role,              type: String, default: ""
+  field :role,              type: String, default: "free"
 
   ## Lockable
   # field :failed_attempts, type: Integer, default: 0 # Only if lock strategy is :failed_attempts
