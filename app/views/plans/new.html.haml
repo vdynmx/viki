@@ -1,5 +1,5 @@
-%h1 Paid User
-= form_for @plan do |f|
-  = f.label :"Upgrade to paid ?"
-  = f.check_box :public
-  = f.submit "Save"
+= form_tag plans_path do
+  %h4 Click the button!
+  %script.stripe-button{"data-amount" => "<haml_loud", "data-key" => @stripe_btn_data[:key], :src => "https://checkout.stripe.com/checkout.js"}
+    :cdata
+      @stripe_btn_data[:amount]
