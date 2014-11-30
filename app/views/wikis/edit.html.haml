@@ -12,8 +12,8 @@
       = f.label :Private
       = f.check_box :private, private: true, method: :update
     .form-group
-      = f.label :"Add Collaborators"
-      = f.text_field :user, class: 'form-control', placeholder: "Enter Collaborators Name"
+      /= f.label :"Add Collaborators"
+      /= f.text_field :user, class: 'form-control', placeholder: "Enter Collaborators Name"
       = render partial: 'collaborators/collaborator', locals: { wiki: @wiki }
 
   .form-group
