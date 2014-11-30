@@ -51,4 +51,9 @@ class User
   def free?
     role == 'free'
   end
+
+  def collaborator(wiki)
+    collaborators.where(wiki_id: wiki.id).first
+  end
+  
 end

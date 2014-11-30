@@ -1,0 +1,7 @@
+.collaborator
+  - if collaborator = current_user.collaborator(wiki)
+    Collaborator
+  - else
+    = link_to [wiki, Collaborator.new], class: 'btn btn-primary', method: :wiki do
+      %i.glyphicon.glyphicon-star>
+      \  Collaborate

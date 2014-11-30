@@ -10,5 +10,8 @@ class Wiki
   field :private, type: Boolean, default: false
 
   scope :visible_to, -> (user) { user ? all : where(private: false) }
-
+  
+  def public?
+    !self.private?
+  end
 end

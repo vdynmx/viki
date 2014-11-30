@@ -6,9 +6,21 @@
   .form-group
     = f.label :body
     = f.text_area :body, rows: 8, class: 'form-control', placeholder: "Enter Wiki body"
+
   - if policy(Wiki.new).create?
+    .form-group
+      = f.label :Private
+      = f.check_box :private, private: true, method: :update
+    .form-group
+      = f.label :"Add Collaborators"
+      = f.text_field :user, class: 'form-control', placeholder: "Enter Collaborators Name"
+      = render partial: 'collaborators/collaborator', locals: { wiki: @wiki }
+
   .form-group
-    = f.label :Private
-    = f.check_box :private, private: true, method: :update
+    = f.label :Collaborators
+    = @wiki.user.name     
+
+
+
   .form-group
     = f.submit "Save", class: 'btn btn-success'
