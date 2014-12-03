@@ -22,9 +22,9 @@ class WikiPolicy < ApplicationPolicy
  
      def resolve
        wikis = []
-       if user.role?(:admin)
+       if @user && user.role?(:admin)
          wikis = scope.all # if the user is an admin, show them all the wikis
-       elsif user.role?(:paid)
+       elsif @user && user.role?(:paid)
          all_wikis = scope.all
          all_wikis.each do |wiki|
            if wiki.public? || wiki.user == user || wiki.users.include?(user) 
@@ -34,7 +34,7 @@ class WikiPolicy < ApplicationPolicy
        else # this is the lowly standard user
          all_wikis = scope.all
          wikis = []
-         all_wikkis.each do |wiki|
+         all_wikis.each do |wiki|
            if wiki.public? || wiki.users.include?(user)
              wikis << wiki # only show standard users public wikis and private wikis they are a collaborator on
            end

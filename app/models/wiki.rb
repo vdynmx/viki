@@ -9,7 +9,7 @@ class Wiki
   field :body, type: String
   field :private, type: Boolean, default: false
 
-  scope :visible_to, -> (user) { user ? all : where(:private => false).or(:id => user.wiki_ids) }
+  scope :visibleto, ->(user) { user.blank? ? where(:private => false) : where(:private => false).or(:id => user.wikiids) }
   
 
   def public?
