@@ -1,5 +1,5 @@
 .collaborator
-  - if collaborator = current_user.collaborator(wiki)
+  - if current_user.role?(:admin) || current_user.role?(:paid)
     Collaborator
   - else
     = link_to [wiki, Collaborator.new], class: 'btn btn-primary', method: :wiki do

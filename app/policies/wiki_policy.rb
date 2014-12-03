@@ -9,7 +9,7 @@ class WikiPolicy < ApplicationPolicy
   end
 
   def destroy?
-    user.present? || (record.user == user || user.role?(:admin))
+    user.present? || (record.users == user || user.role?(:admin))
   end
 
   class Scope
@@ -35,7 +35,7 @@ class WikiPolicy < ApplicationPolicy
          all_wikis = scope.all
          wikis = []
          all_wikis.each do |wiki|
-           if wiki.public? || wiki.users.include?(user)
+           if wiki.public? #|| wiki.users.include?(user)
              wikis << wiki # only show standard users public wikis and private wikis they are a collaborator on
            end
          end
