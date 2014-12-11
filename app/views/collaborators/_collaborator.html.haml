@@ -1,9 +1,12 @@
 - if current_user.role == "admin" || current_user.role == "paid"
-  = form_for [wiki] do |f|
+  = form_tag(collaborators_path, method: :create) do
+    = hidden_field_tag :wiki_id, wiki.id
+
     .form-group
-    = fields_for :user do |u|
-      = u.text_field :email, placeholder: 'Enter Email', id: 'user-email', class: 'form-control'
-      .form-group
-      = f.submit "Add Collaborator", class: 'btn btn-success'
+      = fields_for :user do |u|
+        = u.text_field :email, placeholder: 'Enter Email', id: 'user-email', class: 'form-control'
+    .form-group
+      = submit_tag "Add Collaborator", class: 'btn btn-success'
 - else
-  Upgrade to add collaborators
+  %span8.text-center
+    Upgrade to add collaborators

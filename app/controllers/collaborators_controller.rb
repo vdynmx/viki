@@ -1,4 +1,4 @@
-class Wikis::CollaboratorsController < ApplicationController
+class CollaboratorsController < ApplicationController
 
  # def create
  #    @wiki = Wiki.find(params[:wiki_id])
@@ -11,10 +11,11 @@ class Wikis::CollaboratorsController < ApplicationController
   def create
     @wiki = Wiki.find(params[:wiki_id])
     @email = params[:user][:email]
-    @user = User.where(email: @email).first if @email
+    @user = User.where(email: @email).first
+    
+    @user.wikis << @wiki
 
-    if @collaborator
-      @collaborator.save
+    if @wiki.save
       redirect_to @wiki, notice: 'Collaborator added!'
     else
       flash[:error] = 'Collaborator failed. Please try again.'
