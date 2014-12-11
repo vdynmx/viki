@@ -14,12 +14,14 @@ users = User.all
 
  # Create Wikis
  50.times do
-   Wiki.create!(
-     user:   users.sample,
+   w1 = Wiki.create!(
      title:  Faker::Lorem.sentence,
-     body:   Faker::Lorem.paragraph
+     body:   Faker::Lorem.paragraph     
    )
+
+   w1.users << users.sample
  end
+
  wikis = Wiki.all
  
  user = User.first
@@ -31,4 +33,4 @@ users = User.all
 
 puts "Seed finished"
 puts "#{User.count} users created"
-puts "#{Wiki.count} posts created"
+puts "#{Wiki.count} wikis created"

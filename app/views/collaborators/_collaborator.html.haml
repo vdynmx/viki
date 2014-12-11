@@ -1,7 +1,9 @@
-.collaborator
-  - if current_user.role?(:admin) || current_user.role?(:paid)
-    Collaborator
-  - else
-    = link_to [wiki, Collaborator.new], class: 'btn btn-primary', method: :wiki do
-      %i.glyphicon.glyphicon-star>
-      \  Collaborate
+- if current_user.role == "admin" || current_user.role == "paid"
+  = form_for [wiki] do |f|
+    .form-group
+    = fields_for :user do |u|
+      = u.text_field :email, placeholder: 'Enter Email', id: 'user-email', class: 'form-control'
+      .form-group
+      = f.submit "Add Collaborator", class: 'btn btn-success'
+- else
+  Upgrade to add collaborators
