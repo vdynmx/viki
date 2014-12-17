@@ -1,11 +1,11 @@
 class WikiPolicy < ApplicationPolicy
 
   def new?
-    true
+    user.present?
   end
 
   def show?
-      record.public? || user.present? &&  record.users.include?(user)
+    record.public? || user.present? && record.users.include?(user)
   end
   
   def update?

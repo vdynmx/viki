@@ -3,8 +3,10 @@ class WikisController < ApplicationController
   def index
     #@wikis = policy_scope(Wiki)
     #@wikis = Wiki.all
+    #@wikis = current_user.nil? ? Wiki.public : Wiki.visible_to(current_user)
     @wikis = Wiki.visible_to(current_user)
-     authorize @wikis    
+     authorize @wikis 
+        
   end
 
   def show
@@ -17,7 +19,7 @@ class WikisController < ApplicationController
   end
   
   def create
-    @wiki = current_user.wikis.build(params.require(:wiki).permit(:title, :body, :private))
+    @wiki = current_user.wikis.build(params.require(:wiki).permit(:title, :body, :private, :user))
     authorize @wiki
     if @wiki.save
       flash[:notice] = "Wiki was saved."
