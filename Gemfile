@@ -27,6 +27,7 @@ gem 'faker'
 gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 gem 'stripe'
+gem 'epic-editor-rails'
 
 group :doc do
   gem 'sdoc', require: false

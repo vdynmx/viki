@@ -1,7 +1,7 @@
 class Wiki
   include Mongoid::Document
   include Mongoid::Timestamps
-  include Mongoid::Slug
+  #include Mongoid::Slug
 
   #def to_param
   #  "#{id} #{title}".parameterize

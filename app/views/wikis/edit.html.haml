@@ -2,10 +2,12 @@
 = form_for @wiki do |f|
   .form-group
     = f.label :title
-    = f.text_field :title, class: 'form-control', placeholder: "Enter Wiki title"
+    = f.text_field :title, class: 'form-control', placeholder: "Enter wiki title"
   .form-group
     = f.label :body
-    = f.text_area :body, rows: 8, class: 'form-control', placeholder: "Enter Wiki body"
+    = f.hidden_field :body, id: "body"
+    #epiceditor
+      %textarea#my-edit-area
 
   - if policy(Wiki.new).create?
     .form-group
@@ -23,3 +25,10 @@
 %h2
   Adding More collaborators
 = render partial: 'collaborators/collaborator', locals: { wiki: @wiki }
+
+:javascript
+  var editor = new EpicEditor().load();
+  editor.getElement('editor').body.innerHTML = '#{escape_javascript(@wiki.body)}';
+  function prep() {
+    $("#body")[0].value = (editor.getElement('editor').body.innerHTML);
+  }
