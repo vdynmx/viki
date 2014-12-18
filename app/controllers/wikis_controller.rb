@@ -10,7 +10,7 @@ class WikisController < ApplicationController
   end
 
   def show
-    @wiki = Wiki.find(params[:id])
+    @wiki = Wiki.where(:slug => params[:id].to_s).first
   end
   
   def new
