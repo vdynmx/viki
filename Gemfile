@@ -10,6 +10,7 @@ end
 
 gem 'mongoid', '~> 4', github: 'mongoid/mongoid'
 gem 'bson_ext'
+gem 'mongoid_slug'
 
 gem 'devise'
 gem 'bootstrap-sass', '~> 3.1.1' 
